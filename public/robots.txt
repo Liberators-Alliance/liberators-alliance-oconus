@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oconus.liberators-alliance.org/sitemap.xml
+Host: https://oconus.liberators-alliance.org

@@ -1,3 +1,48 @@
+import type { Metadata } from "next";
+
+const BASE_URL = "https://oconus.liberators-alliance.org";
+
+export const metadata: Metadata = {
+  title: "Contact — Reach Liberators Alliance",
+  description:
+    "Contact Liberators Alliance for general inquiries, volunteer interest, or Operators Council information. Based in Castle Rock, Colorado — operational internationally.",
+  alternates: { canonical: `${BASE_URL}/contact` },
+  openGraph: {
+    title: "Contact | Liberators Alliance",
+    description:
+      "Reach out about general inquiries, volunteering, or the Operators Council. Castle Rock, Colorado — operational internationally.",
+    url: `${BASE_URL}/contact`,
+    images: [{ url: "/logo.png", alt: "Liberators Alliance logo" }],
+  },
+  twitter: {
+    title: "Contact | Liberators Alliance",
+    description:
+      "Reach out about general inquiries, volunteering, or the Operators Council.",
+    images: ["/logo.png"],
+  },
+};
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact — Liberators Alliance",
+  description:
+    "Contact page for Liberators Alliance. General inquiries, volunteer interest, and Operators Council inquiries.",
+  url: `${BASE_URL}/contact`,
+  isPartOf: { "@type": "WebSite", url: BASE_URL },
+  mainEntity: {
+    "@type": "NGO",
+    name: "Liberators Alliance",
+    email: "contactus@liberators-alliance.org",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Castle Rock",
+      addressRegion: "CO",
+      addressCountry: "US",
+    },
+  },
+};
+
 export default function Contact() {
   const contacts = [
     {
@@ -19,11 +64,15 @@ export default function Contact() {
 
   return (
     <div className="bg-[#151515] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
 
       {/* Header */}
       <section className="pt-40 pb-20 px-6 border-b border-white/5">
         <div className="max-w-3xl mx-auto">
-          <p className="text-xs tracking-[0.3em] uppercase text-[#F6DB06] mb-6">Contact</p>
+          <p className="text-xs tracking-[0.3em] uppercase text-[#F6DB06] mb-6" aria-hidden="true">Contact</p>
           <h1 className="font-display text-[clamp(3rem,8vw,7rem)] leading-none text-white mb-6">
             Reach Out
           </h1>
@@ -34,18 +83,20 @@ export default function Contact() {
       </section>
 
       {/* Contact Options */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-6" aria-labelledby="contact-options-heading">
+        <h2 id="contact-options-heading" className="sr-only">Contact Options</h2>
         <div className="max-w-3xl mx-auto space-y-px">
           {contacts.map((contact) => (
             <a
               key={contact.label}
               href={`mailto:contactus@liberators-alliance.org?subject=${encodeURIComponent(contact.subject)}`}
               className="group flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-8 bg-[#1A1A1A] hover:bg-[#1E1E1E] border-l-2 border-transparent hover:border-[#F6DB06] transition-all duration-200"
+              aria-label={`${contact.label} — email us with subject: ${contact.subject}`}
             >
               <div>
-                <h2 className="font-display text-2xl text-white tracking-widest mb-2 group-hover:text-[#F6DB06] transition-colors duration-200">
+                <h3 className="font-display text-2xl text-white tracking-widest mb-2 group-hover:text-[#F6DB06] transition-colors duration-200">
                   {contact.label}
-                </h2>
+                </h3>
                 <p className="text-white/40 font-light text-sm">{contact.desc}</p>
               </div>
               <div className="flex-shrink-0 text-right">
@@ -53,7 +104,7 @@ export default function Contact() {
                 <p className="text-sm text-white/50 font-light">{contact.subject}</p>
                 <p className="text-xs text-[#F6DB06] tracking-widest uppercase mt-3 flex items-center gap-1 md:justify-end">
                   Email us
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true">→</span>
                 </p>
               </div>
             </a>
