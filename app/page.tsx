@@ -7,7 +7,7 @@ const BASE_URL = "https://oconus.liberators-alliance.org";
 export const metadata: Metadata = {
   title: "Liberators Alliance — Anti-Trafficking Nonprofit | Rescue · Relief · Report",
   description:
-    "Liberators Alliance is an international anti-trafficking and humanitarian relief nonprofit with 5 years of operations across Southeast Asia and Central America. Donate, volunteer, or partner to help fight human trafficking.",
+    "Liberators Alliance is an international anti-trafficking and humanitarian relief nonprofit with 5 years of operations across the world. Donate, volunteer, or partner to help fight all versions of trafficking.",
   alternates: { canonical: BASE_URL },
   openGraph: {
     title: "Liberators Alliance — Anti-Trafficking Nonprofit | Rescue · Relief · Report",
@@ -194,7 +194,7 @@ export default function Home() {
               We operate in the places others won&apos;t. For the people no one else is coming for.
             </p>
             <p className="text-base text-white/50 font-light leading-relaxed max-w-xl">
-              Liberators Alliance is an international anti-trafficking and humanitarian relief organization with five years of operational history across Southeast Asia, Central America, and beyond. We rescue. We relieve. We report.
+              Liberators Alliance is an international anti-trafficking and humanitarian relief organization with five years of operational history across Southeast Asia, Central America, and beyond. Providing rescue, relief, and reporting what we find along the way.
             </p>
             <div className="mt-12 flex flex-col sm:flex-row gap-4">
               <Link
@@ -284,19 +284,19 @@ export default function Home() {
             {[
               {
                 title: "Volunteer",
-                desc: "Tiered structure. Real vetting. Not for everyone — that's the point.",
+                desc: "People of any backgound are invted to apply, but not all will be choosen.",
                 href: "/get-involved#volunteer",
                 cta: "Apply",
               },
               {
                 title: "Donate",
-                desc: "Fund operations, aftercare, and relief efforts across two continents.",
+                desc: "Fund operations, aftercare, and relief efforts across the world.",
                 href: "/get-involved#donate",
                 cta: "Support the Mission",
               },
               {
                 title: "Operators Council",
-                desc: "The founding principal tier for those who want to be part of what makes it possible.",
+                desc: "The foundational capital tier for those who want to make a legacy level investment to forever change the lives of the oppressed.",
                 href: "/get-involved#operators-council",
                 cta: "Inquire",
               },
