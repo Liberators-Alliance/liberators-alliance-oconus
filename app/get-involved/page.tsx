@@ -245,15 +245,15 @@ export default function GetInvolved() {
           </div>
 
           <p className="text-xl text-white/70 font-light leading-relaxed mb-6 max-w-2xl">
-            For those who don&apos;t just want to support the mission — they want to be part of what makes it possible.
+            For those who don&apos;t just want to support the mission — they want to be what makes it possible.
           </p>
 
           <div className="my-10 pl-8 border-l-2 border-[#F6DB06]">
             <p className="text-white/60 font-light leading-relaxed mb-4">
-              Operators Council members are the founding principals of Liberators Alliance. Their investment doesn&apos;t fund a line item — it funds an entire operation, from initial intelligence through final aftercare placement.
+              Operators Council members are the foundational capital of Liberators Alliance. Their investment doesn&apos;t fund a line item — it funds an entire operation, from initial intelligence through final aftercare placement.
             </p>
             <p className="text-white/60 font-light leading-relaxed mb-4">
-              In return, Council members receive direct access to mission outcomes and operational updates unavailable to the public.
+              In return, Council members receive direct access to mission briefs from real Operators and operational updates unavailable to the public.
             </p>
             <p className="text-white/60 font-light leading-relaxed">
               This is not a donor recognition program. It is an invitation to the inner circle of one of the most consequential anti-trafficking efforts in the world.
