@@ -152,6 +152,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
         <div className="absolute inset-0" aria-hidden="true">
+          {/* Ambient background texture */}
           <Image
             src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&q=80"
             alt=""
@@ -161,6 +162,26 @@ export default function Home() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#151515]/60 via-[#151515]/40 to-[#151515]" />
+
+          {/* Ghosted H-60 — right side, behind heading text */}
+          <div className="absolute inset-y-0 right-0 w-full md:w-[72%] flex items-center justify-end pointer-events-none">
+            <div className="relative w-full h-full">
+              <Image
+                src="https://images.unsplash.com/photo-1570984066691-54e56650764d?w=1600&q=80"
+                alt=""
+                fill
+                className="object-contain object-right-center"
+                style={{
+                  opacity: 0.13,
+                  mixBlendMode: "luminosity",
+                  filter: "grayscale(30%)",
+                  transform: "translateY(-4%)",
+                }}
+                unoptimized
+                priority
+              />
+            </div>
+          </div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
