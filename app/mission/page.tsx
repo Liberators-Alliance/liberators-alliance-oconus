@@ -5,33 +5,52 @@ import Link from "next/link";
 const BASE_URL = "https://oconus.liberators-alliance.org";
 
 export const metadata: Metadata = {
-  title: "The Mission — Anti-Trafficking Operations & Humanitarian Relief",
+  title: "The Mission — Anti-Trafficking & Humanitarian Relief Operations",
   description:
-    "Liberators Alliance operates in high-risk, low-visibility environments across Southeast Asia and Central America. Intelligence-driven, field-based, committed to the full victim journey from rescue through long-term restoration.",
+    "Liberators Alliance conducts intelligence-driven anti-trafficking rescue operations and humanitarian relief in high-risk environments across Southeast Asia and Central America. Committed to the full victim journey from rescue through restoration.",
   alternates: { canonical: `${BASE_URL}/mission` },
   openGraph: {
-    title: "The Mission | Liberators Alliance",
+    title: "The Mission — Anti-Trafficking Operations | Liberators Alliance",
     description:
-      "Intelligence-driven anti-trafficking operations and humanitarian relief in high-risk international environments. We go where the problem is.",
+      "Intelligence-driven anti-trafficking operations and humanitarian relief where conventional aid cannot reach. We go where the problem is.",
     url: `${BASE_URL}/mission`,
-    images: [{ url: "/logo.png", alt: "Liberators Alliance logo" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Liberators Alliance — Building Alliances to Free the Oppressed",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    title: "The Mission | Liberators Alliance",
+    title: "The Mission | Liberators Alliance — Anti-Trafficking Operations",
     description:
-      "Intelligence-driven anti-trafficking operations in high-risk international environments. We go where the problem is.",
-    images: ["/logo.png"],
+      "Intelligence-driven anti-trafficking rescue and humanitarian relief in high-risk international environments.",
+    images: [{ url: "/og-image.png", alt: "Liberators Alliance — Building Alliances to Free the Oppressed" }],
   },
 };
 
 const pageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "The Mission — Liberators Alliance",
+  "@id": `${BASE_URL}/mission/#webpage`,
+  name: "The Mission — Liberators Alliance Anti-Trafficking Operations",
   description:
-    "Anti-trafficking operations and humanitarian relief in Southeast Asia and Central America. Intelligence-driven, multi-phase, committed to the full victim journey.",
+    "Intelligence-driven anti-trafficking operations and humanitarian relief in Southeast Asia and Central America. Multi-phase approach committed to the full victim journey.",
   url: `${BASE_URL}/mission`,
-  isPartOf: { "@type": "WebSite", url: BASE_URL },
+  isPartOf: { "@type": "WebSite", "@id": `${BASE_URL}/#website` },
+  about: { "@type": "NGO", "@id": `${BASE_URL}/#organization` },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+    { "@type": "ListItem", position: 2, name: "The Mission", item: `${BASE_URL}/mission` },
+  ],
 };
 
 export default function Mission() {
@@ -40,6 +59,10 @@ export default function Mission() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* Hero */}

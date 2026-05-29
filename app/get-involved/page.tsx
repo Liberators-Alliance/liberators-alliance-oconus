@@ -6,33 +6,120 @@ import ContactForm from "@/components/ContactForm";
 const BASE_URL = "https://oconus.liberators-alliance.org";
 
 export const metadata: Metadata = {
-  title: "Get Involved — Volunteer, Donate, or Join the Operators Council",
+  title: "Get Involved — Donate, Volunteer, or Fight Trafficking Today",
   description:
-    "Three ways to engage with Liberators Alliance: volunteer through our tiered vetting structure, donate to fund anti-trafficking operations and aftercare, or inquire about the Operators Council — our principal-level funding tier.",
+    "Help fight human trafficking: donate to fund rescue operations and victim aftercare, volunteer through our tiered structure, or join the Operators Council. Liberators Alliance — five years of anti-trafficking operations across two continents.",
   alternates: { canonical: `${BASE_URL}/get-involved` },
   openGraph: {
-    title: "Get Involved | Liberators Alliance",
+    title: "Help Fight Human Trafficking — Donate or Volunteer | Liberators Alliance",
     description:
-      "Volunteer, donate, or join the Operators Council. Real vetting. Real operations. For those who believe the problem is worth solving.",
+      "Donate to anti-trafficking operations, volunteer with a field-based nonprofit, or join the Operators Council. Real vetting. Real operations. Real impact.",
     url: `${BASE_URL}/get-involved`,
-    images: [{ url: "/logo.png", alt: "Liberators Alliance logo" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Liberators Alliance — Building Alliances to Free the Oppressed",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    title: "Get Involved | Liberators Alliance",
+    title: "Donate or Volunteer to Fight Human Trafficking | Liberators Alliance",
     description:
-      "Volunteer, donate, or join the Operators Council. Real vetting. Real operations.",
-    images: ["/logo.png"],
+      "Fund anti-trafficking rescues, volunteer with real vetting, or join our principal-level Operators Council. Every dollar goes to the field.",
+    images: [{ url: "/og-image.png", alt: "Liberators Alliance — Building Alliances to Free the Oppressed" }],
   },
 };
 
 const pageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Get Involved — Liberators Alliance",
+  "@id": `${BASE_URL}/get-involved/#webpage`,
+  name: "Get Involved — Donate to Fight Human Trafficking | Liberators Alliance",
   description:
-    "Three ways to engage with Liberators Alliance: volunteer, donate, or join the Operators Council principal-level funding tier.",
+    "Donate, volunteer, or join the Operators Council to support anti-trafficking rescue operations and humanitarian relief.",
   url: `${BASE_URL}/get-involved`,
-  isPartOf: { "@type": "WebSite", url: BASE_URL },
+  isPartOf: { "@type": "WebSite", "@id": `${BASE_URL}/#website` },
+  about: { "@type": "NGO", "@id": `${BASE_URL}/#organization` },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+    { "@type": "ListItem", position: 2, name: "Get Involved", item: `${BASE_URL}/get-involved` },
+  ],
+};
+
+const donateSchema = {
+  "@context": "https://schema.org",
+  "@type": "DonateAction",
+  "@id": `${BASE_URL}/get-involved/#donate-action`,
+  name: "Donate to Liberators Alliance Anti-Trafficking Operations",
+  description:
+    "Fund direct anti-trafficking rescue operations, victim aftercare, and humanitarian relief in high-risk international environments where conventional aid cannot reach.",
+  recipient: {
+    "@type": "NGO",
+    "@id": `${BASE_URL}/#organization`,
+    name: "Liberators Alliance",
+  },
+  target: {
+    "@type": "EntryPoint",
+    urlTemplate: `mailto:contactus@liberators-alliance.org?subject=Donation%20Inquiry`,
+    actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
+  },
+};
+
+const volunteerSchema = {
+  "@context": "https://schema.org",
+  "@type": "VolunteerAction",
+  "@id": `${BASE_URL}/get-involved/#volunteer-action`,
+  name: "Volunteer with Liberators Alliance to Fight Human Trafficking",
+  description:
+    "Join Liberators Alliance's tiered volunteer structure. No military or law enforcement background required for entry-level positions. Vetting is real. Acceptance is earned.",
+  agent: {
+    "@type": "Organization",
+    "@id": `${BASE_URL}/#organization`,
+    name: "Liberators Alliance",
+  },
+  target: {
+    "@type": "EntryPoint",
+    urlTemplate: `mailto:contactus@liberators-alliance.org?subject=Volunteer%20Inquiry`,
+    actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
+  },
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Help Fight Human Trafficking with Liberators Alliance",
+  description: "Three ways to support anti-trafficking operations and humanitarian relief",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Volunteer",
+      text: "Apply through our tiered volunteer structure. No military background required. Submit your name, email, and background to contactus@liberators-alliance.org with subject 'Volunteer Inquiry.'",
+      url: `${BASE_URL}/get-involved#volunteer`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Donate",
+      text: "Contact us at contactus@liberators-alliance.org to fund rescue operations, victim aftercare, or humanitarian relief efforts.",
+      url: `${BASE_URL}/get-involved#donate`,
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Join the Operators Council",
+      text: "Inquire about principal-level membership to fund entire operations end-to-end. Contact contactus@liberators-alliance.org with subject 'Operators Council Inquiry.'",
+      url: `${BASE_URL}/get-involved#operators-council`,
+    },
+  ],
 };
 
 export default function GetInvolved() {
@@ -41,6 +128,22 @@ export default function GetInvolved() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(volunteerSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
 
       {/* Page Header */}

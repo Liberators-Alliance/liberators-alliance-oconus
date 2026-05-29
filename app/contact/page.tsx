@@ -3,35 +3,45 @@ import type { Metadata } from "next";
 const BASE_URL = "https://oconus.liberators-alliance.org";
 
 export const metadata: Metadata = {
-  title: "Contact — Reach Liberators Alliance",
+  title: "Contact — Reach Liberators Alliance to Donate, Volunteer, or Inquire",
   description:
-    "Contact Liberators Alliance for general inquiries, volunteer interest, or Operators Council information. Based in Castle Rock, Colorado — operational internationally.",
+    "Contact Liberators Alliance to donate to anti-trafficking operations, inquire about volunteering, or connect with the Operators Council. Based in Castle Rock, Colorado — operational internationally.",
   alternates: { canonical: `${BASE_URL}/contact` },
   openGraph: {
-    title: "Contact | Liberators Alliance",
+    title: "Contact Liberators Alliance — Donate, Volunteer, or Inquire",
     description:
-      "Reach out about general inquiries, volunteering, or the Operators Council. Castle Rock, Colorado — operational internationally.",
+      "Reach out about donating to fight human trafficking, volunteering, or the Operators Council. Castle Rock, Colorado — operational internationally.",
     url: `${BASE_URL}/contact`,
-    images: [{ url: "/logo.png", alt: "Liberators Alliance logo" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Liberators Alliance — Building Alliances to Free the Oppressed",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    title: "Contact | Liberators Alliance",
+    title: "Contact Liberators Alliance — Anti-Trafficking Nonprofit",
     description:
-      "Reach out about general inquiries, volunteering, or the Operators Council.",
-    images: ["/logo.png"],
+      "Reach out to donate, volunteer, or join the Operators Council. contactus@liberators-alliance.org",
+    images: [{ url: "/og-image.png", alt: "Liberators Alliance — Building Alliances to Free the Oppressed" }],
   },
 };
 
 const pageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact — Liberators Alliance",
+  "@id": `${BASE_URL}/contact/#webpage`,
+  name: "Contact — Liberators Alliance Anti-Trafficking Nonprofit",
   description:
-    "Contact page for Liberators Alliance. General inquiries, volunteer interest, and Operators Council inquiries.",
+    "Contact Liberators Alliance for donations, volunteer inquiries, and Operators Council information.",
   url: `${BASE_URL}/contact`,
-  isPartOf: { "@type": "WebSite", url: BASE_URL },
+  isPartOf: { "@type": "WebSite", "@id": `${BASE_URL}/#website` },
   mainEntity: {
     "@type": "NGO",
+    "@id": `${BASE_URL}/#organization`,
     name: "Liberators Alliance",
     email: "contactus@liberators-alliance.org",
     address: {
@@ -41,6 +51,15 @@ const pageSchema = {
       addressCountry: "US",
     },
   },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+    { "@type": "ListItem", position: 2, name: "Contact", item: `${BASE_URL}/contact` },
+  ],
 };
 
 export default function Contact() {
@@ -67,6 +86,10 @@ export default function Contact() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* Header */}

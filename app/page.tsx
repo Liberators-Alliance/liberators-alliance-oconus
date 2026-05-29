@@ -5,67 +5,110 @@ import Image from "next/image";
 const BASE_URL = "https://oconus.liberators-alliance.org";
 
 export const metadata: Metadata = {
-  title: "Liberators Alliance — Building Alliances to Free the Oppressed",
+  title: "Liberators Alliance — Anti-Trafficking Nonprofit | Rescue · Relief · Report",
   description:
-    "Liberators Alliance is an international anti-trafficking and humanitarian relief nonprofit with five years of operations across Southeast Asia and Central America. We rescue. We relieve. We report.",
+    "Liberators Alliance is an international anti-trafficking and humanitarian relief nonprofit with 5 years of operations across Southeast Asia and Central America. Donate, volunteer, or partner to help fight human trafficking.",
   alternates: { canonical: BASE_URL },
   openGraph: {
-    title: "Liberators Alliance — Building Alliances to Free the Oppressed",
+    title: "Liberators Alliance — Anti-Trafficking Nonprofit | Rescue · Relief · Report",
     description:
-      "An international anti-trafficking and humanitarian relief organization. We operate in the places others won't, for the people no one else is coming for.",
+      "An international anti-trafficking and humanitarian relief organization operating where others won't. Donate or volunteer to help fight human trafficking.",
     url: BASE_URL,
-    images: [{ url: "/logo.png", alt: "Liberators Alliance logo" }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Liberators Alliance — Building Alliances to Free the Oppressed",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    title: "Liberators Alliance — Building Alliances to Free the Oppressed",
+    title: "Liberators Alliance — Fight Human Trafficking | Donate & Volunteer",
     description:
-      "An international anti-trafficking and humanitarian relief organization operating where others won't.",
-    images: ["/logo.png"],
+      "International anti-trafficking operations in high-risk environments. Help rescue victims, fund relief, and fight trafficking.",
+    images: [{ url: "/og-image.png", alt: "Liberators Alliance logo and tagline" }],
   },
 };
 
+// Three pillars as ItemList for Google rich results
+const pillarsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Liberators Alliance — Three Core Programs",
+  description: "The three operational pillars of Liberators Alliance anti-trafficking and humanitarian work",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Rescue",
+      description:
+        "Direct intervention to extract victims from trafficking situations in high-risk international environments.",
+      url: `${BASE_URL}/#rescue`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Relief",
+      description:
+        "High-risk humanitarian relief for vulnerable populations in unstable environments where conventional aid cannot reach.",
+      url: `${BASE_URL}/#relief`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Report",
+      description:
+        "A network platform connecting vetted organizations to unmet needs across the humanitarian landscape.",
+      url: `${BASE_URL}/#report`,
+    },
+  ],
+};
+
+// FAQ schema — questions mirror real donor/volunteer search queries
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "What does Liberators Alliance do?",
+      name: "How can I donate to fight human trafficking?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Liberators Alliance is an international anti-trafficking and humanitarian relief organization. We conduct direct rescue operations to extract victims from trafficking situations, deliver humanitarian relief to populations in unstable environments where conventional aid cannot reach, and operate a network platform that connects vetted organizations to unmet needs across the humanitarian landscape.",
+        text: "You can donate to Liberators Alliance to directly fund anti-trafficking rescue operations, victim aftercare, and humanitarian relief in high-risk environments that conventional aid organizations cannot access. Contact us at contactus@liberators-alliance.org to make a donation. Every dollar goes to field operations. For high-impact principal-level giving, inquire about the Operators Council — our founding donor tier where members fund entire operations end-to-end.",
       },
     },
     {
       "@type": "Question",
-      name: "Where does Liberators Alliance operate?",
+      name: "What anti-trafficking organizations can I donate to?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Liberators Alliance has five years of operational history across Southeast Asia, Central America, and beyond. We operate in high-risk, low-visibility environments that demand precision, patience, and experienced personnel. We do not publicly name specific countries for operational security reasons.",
+        text: "Liberators Alliance is a Colorado-based nonprofit anti-trafficking organization with five years of documented field operations across Southeast Asia and Central America. Unlike advocacy organizations, we are operationally focused — conducting direct rescues, delivering humanitarian relief, and building networks between vetted organizations. We are committed to the full victim journey: from extraction through long-term aftercare and restoration.",
       },
     },
     {
       "@type": "Question",
-      name: "How is Liberators Alliance different from other anti-trafficking organizations?",
+      name: "How can I volunteer to help stop human trafficking?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We are an operational organization, not an advocacy group. Our work is intelligence-driven and field-based. Every operation is preceded by comprehensive assessment and intelligence gathering. We are committed to the full victim journey — from initial rescue through long-term aftercare and restoration — not just extraction.",
+        text: "Liberators Alliance operates a tiered volunteer structure. Entry-level positions do not require military or law enforcement experience — the requirements are adaptability, commitment, and willingness to do difficult work in unfamiliar environments. Vetting is real. Acceptance is earned. Submit your interest at contactus@liberators-alliance.org with the subject 'Volunteer Inquiry.'",
       },
     },
     {
       "@type": "Question",
-      name: "How can I support Liberators Alliance?",
+      name: "What makes Liberators Alliance different from other anti-trafficking nonprofits?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "There are three ways to engage: volunteer (we operate a tiered volunteer structure with real vetting — no military background required), donate to fund operations and aftercare, or inquire about the Operators Council — our principal-level engagement tier for those who want to fund entire operations from initial intelligence through aftercare placement.",
+        text: "Liberators Alliance is an operational organization, not an advocacy group. We execute in the field. Every operation is intelligence-driven and multi-phase — no operation launches without a complete picture of the environment. We are committed to the full victim journey, from rescue through long-term restoration. We also build networks between vetted organizations, multiplying impact across the humanitarian sector.",
       },
     },
     {
       "@type": "Question",
-      name: "Is Liberators Alliance a registered nonprofit?",
+      name: "Is Liberators Alliance a legitimate registered nonprofit?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Liberators Alliance is a Colorado-based nonprofit organization headquartered in Castle Rock, Colorado, with international operations spanning Southeast Asia, Central America, and beyond.",
+        text: "Yes. Liberators Alliance is a registered Colorado-based nonprofit organization headquartered in Castle Rock, Colorado, with five years of operational history across Southeast Asia and Central America. Contact us at contactus@liberators-alliance.org for more information.",
       },
     },
   ],
@@ -73,30 +116,34 @@ const faqSchema = {
 
 const faqs = [
   {
-    q: "What does Liberators Alliance do?",
-    a: "We conduct direct rescue operations, deliver humanitarian relief where conventional aid cannot reach, and operate a network platform connecting vetted organizations to unmet needs. Five years of operations across Southeast Asia, Central America, and beyond.",
+    q: "How can I donate to fight human trafficking?",
+    a: "Contact us at contactus@liberators-alliance.org to direct your donation toward rescue operations, victim aftercare, and humanitarian relief in environments conventional aid organizations can't access. For high-impact principal-level giving, inquire about the Operators Council — where members fund entire operations end-to-end.",
   },
   {
-    q: "Where does Liberators Alliance operate?",
-    a: "We operate across Southeast Asia and Central America — high-density trafficking corridors and fragile environments where most organizations cannot or will not go. We do not name specific countries for operational security reasons.",
+    q: "What anti-trafficking organizations can I donate to?",
+    a: "Liberators Alliance is a Colorado-based anti-trafficking nonprofit with five years of documented field operations across Southeast Asia and Central America. We are operationally focused — direct rescues, humanitarian relief, victim aftercare — not just advocacy. We are committed to the full victim journey.",
   },
   {
-    q: "How is Liberators Alliance different from other anti-trafficking organizations?",
-    a: "We are an operational organization, not an advocacy group. Intelligence precedes every phase. We are committed to the full victim journey — from initial rescue through long-term aftercare and restoration — not just extraction.",
+    q: "How can I volunteer to help stop human trafficking?",
+    a: "We operate a tiered volunteer structure. No military or law enforcement background required for entry-level positions — just adaptability, commitment, and willingness to do hard things in unfamiliar places. Vetting is real. Acceptance is earned. Submit your interest to contactus@liberators-alliance.org.",
   },
   {
-    q: "How can I support Liberators Alliance?",
-    a: "Three paths: volunteer (tiered structure, real vetting, no military background required), donate to fund operations and aftercare, or inquire about the Operators Council — our principal-level tier for those who want to fund entire operations end-to-end.",
+    q: "What makes Liberators Alliance different from other anti-trafficking nonprofits?",
+    a: "We are an operational organization, not an advocacy group. Every operation is intelligence-driven and multi-phase. We execute in the field. And we are committed to the full victim journey — from the moment of rescue through long-term restoration. Not just extraction.",
   },
   {
-    q: "Is Liberators Alliance a registered nonprofit?",
-    a: "Yes. Liberators Alliance is a Colorado-based nonprofit headquartered in Castle Rock, Colorado, with international operations across two continents.",
+    q: "Is Liberators Alliance a legitimate registered nonprofit?",
+    a: "Yes. Liberators Alliance is a registered Colorado nonprofit headquartered in Castle Rock, Colorado, with five years of operational history across Southeast Asia and Central America.",
   },
 ];
 
 export default function Home() {
   return (
     <div className="bg-[#151515]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pillarsSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -155,26 +202,29 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-px bg-white/5">
             {[
               {
+                id: "rescue",
                 label: "Rescue",
                 body: "Direct intervention to extract victims from trafficking situations in high-risk international environments.",
                 img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-                imgAlt: "Aerial view of mountainous terrain representing remote operational environments",
+                imgAlt: "Aerial view of mountainous terrain representing remote operational environments where Liberators Alliance conducts anti-trafficking rescue operations",
               },
               {
+                id: "relief",
                 label: "Relief",
                 body: "High-risk humanitarian relief for vulnerable populations in unstable environments where conventional aid cannot reach.",
                 img: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
-                imgAlt: "Humanitarian aid workers in a remote field environment",
+                imgAlt: "Humanitarian aid workers operating in a remote field environment, representing Liberators Alliance relief operations",
               },
               {
+                id: "report",
                 label: "Report",
                 body: "A network platform connecting vetted organizations to unmet needs across the humanitarian landscape.",
                 badge: "Coming Soon",
                 img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-                imgAlt: "Satellite imagery representing the global intelligence and reporting network",
+                imgAlt: "Satellite view of Earth representing the global intelligence and reporting network for anti-trafficking organizations",
               },
             ].map((pillar) => (
-              <div key={pillar.label} className="relative bg-[#1A1A1A] group overflow-hidden">
+              <div id={pillar.id} key={pillar.label} className="relative bg-[#1A1A1A] group overflow-hidden">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={pillar.img}
@@ -257,13 +307,13 @@ export default function Home() {
             Frequently Asked Questions
           </h2>
 
-          <dl className="space-y-0 border border-white/5">
+          <dl className="border border-white/5">
             {faqs.map((faq, i) => (
               <div key={i} className="p-8 border-b border-white/5 last:border-b-0">
                 <dt className="font-display text-xl md:text-2xl text-white tracking-wide mb-4">
                   {faq.q}
                 </dt>
-                <dd className="text-white/50 font-light text-sm leading-relaxed pl-0">
+                <dd className="text-white/50 font-light text-sm leading-relaxed">
                   {faq.a}
                 </dd>
               </div>
